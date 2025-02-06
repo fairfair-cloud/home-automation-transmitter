@@ -1,0 +1,10 @@
+# idea
+.idea
+
+# collector
+collector/zigbee2mqtt-data/configuration.yaml
+collector/zigbee2mqtt-data/database.db
+collector/zigbee2mqtt-data/state.json
+collector/zigbee2mqtt-data/coordinator_backup.json
+collector/zigbee2mqtt-data/log
+mosquitto-data

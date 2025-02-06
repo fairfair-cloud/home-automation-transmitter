@@ -1,0 +1,16 @@
+version: 4
+mqtt:
+    base_topic: zigbee2mqtt
+    server: mqtt://mqtt
+serial:
+    port: /dev/ttyUSB0
+    adapter: ezsp
+advanced:
+    channel: 11
+    network_key: GENERATE
+    pan_id: GENERATE
+    ext_pan_id: GENERATE
+frontend:
+    enabled: true
+homeassistant:
+    enabled: false
