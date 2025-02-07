@@ -10,6 +10,7 @@ advanced:
     network_key: GENERATE
     pan_id: GENERATE
     ext_pan_id: GENERATE
+    log_level: info
 frontend:
     enabled: true
 homeassistant:
