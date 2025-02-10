@@ -10,4 +10,4 @@ collector/zigbee2mqtt-data/log
 mosquitto-data
 
 # node
-./node_modules
+node_modules
