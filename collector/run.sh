@@ -1,13 +1,13 @@
 #!/bin/bash
 
-cp zigbee2mqtt-data/configuration-default.yaml zigbee2mqtt-data/configuration.yaml
+cp configuration.yaml /var/docker-volume/home-automation-transmitter/configuration.yaml
 
 docker compose up
 
-sudo rm zigbee2mqtt-data/configuration.yaml
-sudo rm zigbee2mqtt-data/coordinator_backup.json
-sudo rm zigbee2mqtt-data/database.db
-sudo rm zigbee2mqtt-data/database.db.backup
-sudo rm zigbee2mqtt-data/state.json
-sudo rm -Rf zigbee2mqtt-data/log
+sudo rm /var/docker-volume/home-automation-transmitter/configuration.yaml
+sudo rm /var/docker-volume/home-automation-transmitter/coordinator_backup.json
+sudo rm /var/docker-volume/home-automation-transmitter/database.db
+sudo rm /var/docker-volume/home-automation-transmitter/database.db.backup
+sudo rm /var/docker-volume/home-automation-transmitter/state.json
+sudo rm -Rf /var/docker-volume/home-automation-transmitter/log
 
