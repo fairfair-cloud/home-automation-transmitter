@@ -8,3 +8,6 @@ collector/zigbee2mqtt-data/state.json
 collector/zigbee2mqtt-data/coordinator_backup.json
 collector/zigbee2mqtt-data/log
 mosquitto-data
+
+# node
+./node_modules
