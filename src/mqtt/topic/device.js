@@ -1,6 +1,15 @@
+import isNull from "../../util/isNull.js";
+
 export default {
     handler: function (topicName, mqttClient, message) {
-        console.log(message);
-        console.log("=======================================================================")
+        if (isNull(global.ws) || global.ws.readyState !== WebSocket.OPEN) return;
+
+        const payload = JSON.stringify({
+            path: "/state",
+            data: message
+        });
+
+        global.ws.send(payload);
+
     }
 }
