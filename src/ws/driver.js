@@ -1,7 +1,14 @@
 let pingInterval = null;
 
-function onmessage(e) {
-    console.log(e.data)
+async function onmessage(e) {
+    const data = JSON.parse(e.data);
+
+    try {
+        console.info(`[WSS] ${data.path}`);
+        (await import("../ws" + data.path + ".js")).default(data);
+    } catch (e) {
+        console.log(e)
+    }
 }
 
 function onopen(e) {

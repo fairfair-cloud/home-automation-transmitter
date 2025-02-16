@@ -8,6 +8,8 @@ let dequeueInterval = null;
 
 const client = mqtt.connect(process.env.MQTT_SERVER_URL);
 
+global.mqttClient = client;
+
 client.on("connect", function () {
     console.log(`Connected to MQTT server (${process.env.MQTT_SERVER_URL})`);
 
