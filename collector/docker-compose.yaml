@@ -6,7 +6,7 @@ services:
         restart: unless-stopped
         logging:
             options:
-                max-size: "10m"
+                max-size: "1m"
         volumes:
             - '/var/docker-volume/home-automation-transmitter/mosquitto:/mosquitto'
         ports:
@@ -20,7 +20,7 @@ services:
         image: koenkk/zigbee2mqtt:2.1.1
         logging:
             options:
-                max-size: "10m"
+                max-size: "1m"
         volumes:
             - /var/docker-volume/home-automation-transmitter/zigbee2mqtt:/app/data
             - /run/udev:/run/udev:ro
