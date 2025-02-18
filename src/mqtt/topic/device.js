@@ -6,7 +6,10 @@ export default {
 
         const payload = JSON.stringify({
             path: "/state",
-            data: message
+            data: {
+                device: topicName.split("/")[1],
+                data: message
+            }
         });
 
         global.ws.send(payload);
