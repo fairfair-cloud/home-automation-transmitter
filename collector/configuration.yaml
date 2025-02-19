@@ -3,6 +3,7 @@ mqtt:
     base_topic: zigbee2mqtt
     server: mqtt://mqtt
 serial:
+    # Go to the /dev directory and find ttyUSBX
     port: /dev/ttyUSB0
     adapter: ezsp
 advanced:
