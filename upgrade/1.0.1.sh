@@ -3,3 +3,5 @@
 sudo apt update && sudp apt upgrade -y
 
 echo "TEST OK"
+
+ls
