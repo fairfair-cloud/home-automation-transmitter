@@ -1,7 +1,13 @@
 let pingInterval = null;
 
 async function onmessage(e) {
-    const data = JSON.parse(e.data);
+    let data = null;
+
+    try {
+        data = JSON.parse(e.data);
+    } catch (error) {
+        return;
+    }
 
     try {
         console.info(`[WSS] ${data.path}`);
