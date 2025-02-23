@@ -10,11 +10,11 @@ export default async function (data) {
     ]);
 
     sh.stdout.on('data', (data) => {
-        console.log(data);
+        console.log(data.toString());
     });
 
     sh.stderr.on('data', (data) => {
-        console.log(data);
+        console.log(data.toString());
     });
 
     sh.on('close', (code) => {
