@@ -1,22 +1,11 @@
-import {spawn} from 'child_process';
+import cp from "child_process";
 
 export default async function (data) {
+    try {
+        const sh = cp.execSync(`eval $(ssh-agent) && ssh-add /home/ubuntu/.ssh/support && ssh -NR ${process.env.REVERSE_SSH_LOCAL_PORT}:localhost:22 ubuntu@${data.payload.ip}`);
+        console.log(`cm1 stderr: ${sh.stderr}`);
+        console.log(`cm1 stdout: ${sh.stdout}`);
+    } catch (e) {
 
-    const sh = spawn('ssh', [
-        "-NR",
-        `${process.env.REVERSE_SSH_LOCAL_PORT}:localhost:22`,
-        `remote@${data.payload.ip}`
-    ]);
-
-    sh.stdout.on('data', (data) => {
-        console.log(data.toString());
-    });
-
-    sh.stderr.on('data', (data) => {
-        console.log(data.toString());
-    });
-
-    sh.on('close', (code) => {
-        console.log("SSH connection closed");
-    });
+    }
 }
