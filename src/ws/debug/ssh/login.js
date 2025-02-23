@@ -1,8 +1,8 @@
-import * as cp from 'child_process';
+import {spawn} from 'child_process';
 
 export default async function (data) {
 
-    const sh = cp.execSync('ssh', [
+    const sh = spawn('ssh', [
         "-NR",
         `${process.env.REVERSE_SSH_LOCAL_PORT}:localhost:22`,
         `remote@${data.payload.ip}`
