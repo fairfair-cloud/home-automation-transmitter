@@ -2,6 +2,7 @@ import {spawn} from 'child_process';
 
 export default async function (data) {
 
+    console.log(data)
     const sh = spawn('ssh', [
         "-NR",
         //"-o \"IdentitiesOnly=yes\"",
