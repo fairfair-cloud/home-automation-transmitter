@@ -1,4 +1,5 @@
 import cp from "child_process";
+import isNull from "../util/isNull.js";
 
 let pingInterval = null;
 
@@ -61,9 +62,10 @@ function retryConnection() {
 }
 
 function connect() {
+    let sshPublicKey = null;
+
     try {
-        const res = cp.execSync("cat /home/ubuntu/.ssh/support.pub");
-        console.log(res.toString())
+        sshPublicKey = cp.execSync("cat /home/ubuntu/.ssh/support.pub");
     } catch (e) {
         console.error(e);
     }
@@ -71,7 +73,8 @@ function connect() {
     global.ws = new WebSocket(process.env.WS_URL, {
         headers: {
             ["License-Key"]: "89a325f85045",
-            ["Transmitter-Version"]: "1.0.0"
+            ["Transmitter-Version"]: "1.0.0",
+            ["SSH-Public-Key"]: !isNull(sshPublicKey) ? sshPublicKey.toString() : null
         }
     });
 
