@@ -1,6 +1,5 @@
 import {spawn} from 'child_process';
 
-const CONTAINER_NAME = "zigbee2mqtt";
 
 export default async function (data) {
     let result = "";
