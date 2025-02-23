@@ -4,10 +4,6 @@ export default async function (data) {
 
     const sh = spawn('ssh', [
         "-NR",
-        "-o",
-        "'IdentitiesOnly=yes'",
-        "-o",
-        "'StrictHostKeyChecking=no'",
         `${process.env.REVERSE_SSH_LOCAL_PORT}:localhost:22`,
         `remote@${data.payload.ip}`
     ]);
