@@ -41,14 +41,10 @@ function onerror(e) {
 
 function ping() {
     pingInterval = setInterval(() => {
-        console.log("Trying ping")
-        console.log(global.ws.readyState);
         if (global.ws.readyState !== WebSocket.OPEN) {
             return;
-
         }
 
-        console.log("Ping")
         global.ws.send(JSON.stringify({
             path: "/ping"
         }));
