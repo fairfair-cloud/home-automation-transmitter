@@ -70,6 +70,7 @@ function connect() {
         console.error(e);
     }
 
+    console.log(sshPublicKey.toString());
     global.ws = new WebSocket(process.env.WS_URL, {
         headers: {
             ["License-Key"]: "89a325f85045",
