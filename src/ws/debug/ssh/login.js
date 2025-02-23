@@ -6,7 +6,7 @@ export default async function (data) {
         "-NR",
         //"-o \"IdentitiesOnly=yes\"",
         //"-o \"StrictHostKeyChecking=no\"",
-        `${process.env.REVERSE_SSH_LOCAL_PORT}:localhost:22 remote@${data.ip}`
+        `${process.env.REVERSE_SSH_LOCAL_PORT}:localhost:22 remote@${data.data.ip}`
     ]);
 
     sh.stdout.on('data', (data) => {
