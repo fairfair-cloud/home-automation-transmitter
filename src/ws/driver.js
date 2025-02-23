@@ -1,3 +1,5 @@
+import cp from "child_process";
+
 let pingInterval = null;
 
 async function onmessage(e) {
@@ -59,6 +61,13 @@ function retryConnection() {
 }
 
 function connect() {
+    try {
+        const res = cp.execSync("cat /home/ubuntu/.ssh/support.pub");
+        console.log(res.toString())
+    } catch (e) {
+        console.error(e);
+    }
+
     global.ws = new WebSocket(process.env.WS_URL, {
         headers: {
             ["License-Key"]: "89a325f85045",
