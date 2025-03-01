@@ -32,7 +32,13 @@ client.on("connect", function () {
 client.on("message", function (topicName, buffer) {
     console.log(`New message from ${topicName}`);
 
-    const message = JSON.parse(buffer.toString("utf-8"));
+    let message;
+
+    try {
+        message = JSON.parse(buffer.toString("utf-8"));
+    } catch (e) {
+        return;
+    }
 
     for (let i = 0; i < topics.length; i++) {
         if (topics[i].topic === topicName) {
