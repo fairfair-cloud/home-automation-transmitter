@@ -12,8 +12,8 @@ try {
         .readdirSync("./src/automation/script")
         .forEach(async file => {
             if (file.endsWith(".js")) {
-                console.info("Load script " + file);
-                
+                console.info("Loading script " + file + "...");
+
                 const script = (await import("./script/" + file)).default;
 
                 if (!isNull(script.DEVICE_IEEE_ADDRESS)) {
