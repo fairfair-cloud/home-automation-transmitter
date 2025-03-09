@@ -9,7 +9,7 @@ try {
     }
 
     fs
-        .readdirSync("./script")
+        .readdirSync("./automation/script")
         .forEach(async file => {
             if (file.endsWith(".js")) {
                 const script = (await import("./script/" + file));
