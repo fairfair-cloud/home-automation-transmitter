@@ -16,7 +16,11 @@ export default {
 
         global.ws.send(payload);
 
-        global.automation.reactOnState[deviceIeeeAddress].forEach(func => func(message));
+        try {
 
+            global.automation.reactOnState[deviceIeeeAddress].forEach(func => func(message));
+        } catch (e) {
+            console.log(e)
+        }
     }
 }
