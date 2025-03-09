@@ -26,7 +26,7 @@ try {
     const sleep = ms => new Promise(r => setTimeout(r, ms));
 
     while (true) {
-        console.log(global.automation.other.length)
+        console.log(global.automation)
         global.automation.other.forEach(func => func());
 
         await sleep(1000);
