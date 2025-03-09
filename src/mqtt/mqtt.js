@@ -21,7 +21,7 @@ client.on("connect", function () {
         dequeueInterval = setInterval(() => {
             if (isNull(global.ws) || global.ws.readyState !== WebSocket.OPEN) return;
 
-            if (!isNull(global.queue.devices)) {
+            if (!isNull(global?.queue?.devices)) {
                 global.ws.send(global.queue.devices);
                 global.queue.devices = null;
             }
