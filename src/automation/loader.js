@@ -11,9 +11,10 @@ try {
     fs
         .readdirSync("./src/automation/script")
         .forEach(async file => {
+            console.log(file)
             if (file.endsWith(".js")) {
                 const script = (await import("./script/" + file)).default;
-                console.log(script.exec)
+
                 if (!isNull(script.DEVICE_IEEE_ADDRESS)) {
                     global.automation.reactOnState[script.DEVICE_IEEE_ADDRESS] = script.exec;
                 } else {
@@ -22,12 +23,11 @@ try {
             }
         });
 
-    console.log(global.automation);
-
     const sleep = ms => new Promise(r => setTimeout(r, ms));
 
     while (true) {
-        global.automation.other.forEach(func => console.log(func));
+        console.log(global.automation.other.length)
+        global.automation.other.forEach(func => func());
 
         await sleep(1000);
     }
