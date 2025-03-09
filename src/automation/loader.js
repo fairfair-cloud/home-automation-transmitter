@@ -11,8 +11,9 @@ try {
     fs
         .readdirSync("./src/automation/script")
         .forEach(async file => {
-            console.log(file)
             if (file.endsWith(".js")) {
+                console.info("Load script " + file);
+                
                 const script = (await import("./script/" + file)).default;
 
                 if (!isNull(script.DEVICE_IEEE_ADDRESS)) {
@@ -26,7 +27,6 @@ try {
     const sleep = ms => new Promise(r => setTimeout(r, ms));
 
     while (true) {
-        console.log(global.automation)
         global.automation.other.forEach(func => func());
 
         await sleep(1000);
