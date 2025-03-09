@@ -16,8 +16,9 @@ export default {
 
         global.ws.send(payload);
 
-        try {
+        if (global?.automation?.reactOnState?.[deviceIeeeAddress]) return;
 
+        try {
             global.automation.reactOnState[deviceIeeeAddress].forEach(func => func(message));
         } catch (e) {
             console.log(e)
