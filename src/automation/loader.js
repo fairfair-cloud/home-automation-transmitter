@@ -13,7 +13,7 @@ try {
         .forEach(async file => {
             if (file.endsWith(".js")) {
                 const script = (await import("./script/" + file));
-
+                console.log(script)
                 if (!isNull(script.DEVICE_IEEE_ADDRESS)) {
                     global.automation.reactOnState[script.DEVICE_IEEE_ADDRESS] = script.exec;
                 } else {
