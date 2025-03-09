@@ -1,5 +1,4 @@
 import fs from "fs";
-import path from "path";
 import isNull from "../util/isNull.js";
 
 try {
@@ -10,7 +9,7 @@ try {
     }
 
     fs
-        .readdirSync(path.join(__dirname, "home-automation-collector/src/automation/script"))
+        .readdirSync("./src/automation/script")
         .forEach(async file => {
             if (file.endsWith(".js")) {
                 const script = (await import("./script/" + file));
