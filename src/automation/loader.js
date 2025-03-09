@@ -12,7 +12,7 @@ try {
         .readdirSync("./src/automation/script")
         .forEach(async file => {
             if (file.endsWith(".js")) {
-                const script = (await import("./script/" + file));
+                const script = import("./script/" + file);
                 console.log(script.exec)
                 if (!isNull(script.DEVICE_IEEE_ADDRESS)) {
                     global.automation.reactOnState[script.DEVICE_IEEE_ADDRESS] = script.exec;
