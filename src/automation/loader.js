@@ -20,15 +20,13 @@ fs
         }
     });
 
+console.log(global.automation);
 
 const sleep = ms => new Promise(r => setTimeout(r, ms));
 
-function callScripts() {
-    global.automation.other.forEach(func => func());
-}
 
 while (true) {
-    callScripts();
+    global.automation.other.forEach(func => func());
 
     await sleep(1000);
 }
