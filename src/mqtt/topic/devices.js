@@ -20,6 +20,8 @@ export default {
         });
 
         if (isNull(global.ws) || global.ws.readyState !== WebSocket.OPEN) {
+            if (isNull(global.queue)) global.queue = {};
+
             global.queue.devices = payload;
             return;
         }
