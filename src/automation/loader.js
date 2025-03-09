@@ -17,7 +17,11 @@ try {
                 const script = (await import("./script/" + file)).default;
 
                 if (!isNull(script.DEVICE_IEEE_ADDRESS)) {
-                    global.automation.reactOnState[script.DEVICE_IEEE_ADDRESS] = script.exec;
+                    if (isNull(global.automation.reactOnState[script.DEVICE_IEEE_ADDRESS])) {
+                        global.automation.reactOnState[script.DEVICE_IEEE_ADDRESS] = [];
+                    }
+
+                    global.automation.reactOnState[script.DEVICE_IEEE_ADDRESS].push(script.exec);
                 } else {
                     global.automation.other.push(script.exec);
                 }
