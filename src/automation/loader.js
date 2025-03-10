@@ -1,8 +1,5 @@
 import fs from "fs";
 import isNull from "../util/isNull.js";
-import {createRequire} from 'module';
-
-const require = createRequire(import.meta.url);
 
 function load() {
     global.automation = {
@@ -16,14 +13,7 @@ function load() {
             if (file.endsWith(".js")) {
                 console.info("Loading script " + file + "...");
 
-                console.log(import.meta.cache)
-                try {
-                    delete require.cache[require.resolve(file)];
-                } catch (e) {
-                    console.log(e);
-                }
-
-                const script = (await import("./script/" + file)).default;
+                const script = (await import("./script/" + file + `?imported=${Date.now()}`)).default;
 
                 if (!isNull(script.DEVICE_IEEE_ADDRESS)) {
                     if (isNull(global.automation.reactOnState[script.DEVICE_IEEE_ADDRESS])) {
