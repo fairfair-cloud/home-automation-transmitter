@@ -16,7 +16,11 @@ function load() {
             if (file.endsWith(".js")) {
                 console.info("Loading script " + file + "...");
 
-                delete require.cache[require.resolve(file)];
+                try {
+                    delete require.cache[require.resolve(file)];
+                } catch (e) {
+                }
+
                 const script = (await import("./script/" + file)).default;
 
                 if (!isNull(script.DEVICE_IEEE_ADDRESS)) {
