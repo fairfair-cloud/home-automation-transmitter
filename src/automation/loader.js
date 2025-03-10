@@ -16,6 +16,7 @@ function load() {
             if (file.endsWith(".js")) {
                 console.info("Loading script " + file + "...");
 
+                console.log(import.meta.cache)
                 try {
                     delete require.cache[require.resolve(file)];
                 } catch (e) {
