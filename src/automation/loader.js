@@ -19,6 +19,7 @@ function load() {
                 try {
                     delete require.cache[require.resolve(file)];
                 } catch (e) {
+                    console.log(e);
                 }
 
                 const script = (await import("./script/" + file)).default;
