@@ -1,8 +1,7 @@
 import isNull from "../util/isNull.js";
 import {ZonedDateTime, ZoneId} from "@js-joda/core";
 
-//const MAX_HISTORY_SECONDS = 60 * 60 * 24;
-const MAX_HISTORY_SECONDS = 10;
+const MAX_HISTORY_SECONDS = 60 * 60 * 24;
 
 if (isNull(global.database)) {
     global.database = {};
