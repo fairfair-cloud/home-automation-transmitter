@@ -1,4 +1,4 @@
-import load from "../../automation/loader.js";
+import load from "../../../automation/loader.js";
 
 export default async function (data) {
     load();
