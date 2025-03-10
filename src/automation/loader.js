@@ -1,5 +1,8 @@
 import fs from "fs";
 import isNull from "../util/isNull.js";
+import {createRequire} from 'module';
+
+const require = createRequire(import.meta.url);
 
 function load() {
     global.automation = {
