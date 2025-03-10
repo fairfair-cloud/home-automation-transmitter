@@ -1,4 +1,5 @@
 import isNull from "../../util/isNull.js";
+import database from "../../automation/database.js";
 
 export default {
     handler: function (topicName, mqttClient, message) {
@@ -15,6 +16,8 @@ export default {
         });
 
         global.ws.send(payload);
+
+        database.add(deviceIeeeAddress, message);
 
         if (isNull(global?.automation?.reactOnState?.[deviceIeeeAddress])) return;
 
