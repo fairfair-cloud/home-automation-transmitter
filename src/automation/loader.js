@@ -1,8 +1,7 @@
 import fs from "fs";
 import isNull from "../util/isNull.js";
 
-try {
-
+function load() {
     global.automation = {
         reactOnState: {},
         other: []
@@ -27,14 +26,6 @@ try {
                 }
             }
         });
-
-    const sleep = ms => new Promise(r => setTimeout(r, ms));
-
-    while (true) {
-        global.automation.other.forEach(func => func());
-
-        await sleep(1000);
-    }
-} catch (e) {
-    console.log(e)
 }
+
+export default load;
