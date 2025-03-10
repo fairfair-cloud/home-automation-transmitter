@@ -16,7 +16,7 @@ function add(deviceIeeeAddress, data) {
 
     const dates = Object.keys(global.database[deviceIeeeAddress]);
     const length = dates.length;
-    const nowEpochSeconds = ZonedDateTime.now(ZoneId.of("Europe/Paris"));
+    const nowEpochSeconds = ZonedDateTime.now(ZoneId.of("Europe/Paris")).toEpochSecond();
 
     for (let i = 0; i < length; i++) {
         if (nowEpochSeconds - MAX_HISTORY_SECONDS > ZonedDateTime.parse(dates[i]).toEpochSecond()) {
