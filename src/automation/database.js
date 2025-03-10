@@ -1,5 +1,5 @@
 import isNull from "../util/isNull.js";
-import {ZonedDateTime, ZoneId} from "js-joda";
+import {ZonedDateTime, ZoneId} from "@js-joda/core";
 
 const MAX_HISTORY_SECONDS = 60 * 60 * 24;
 
