@@ -9,6 +9,7 @@ async function onmessage(e) {
     try {
         data = JSON.parse(e.data);
     } catch (error) {
+        console.log(error);
         return;
     }
 
