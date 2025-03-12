@@ -13,16 +13,20 @@ function load() {
             if (file.endsWith(".js")) {
                 console.info("Loading script " + file + "...");
 
-                const script = (await import("./script/" + file + `?v=${Date.now()}`)).default;
+                try {
+                    const script = (await import("./script/" + file + `?v=${Date.now()}`)).default;
 
-                if (!isNull(script.DEVICE_IEEE_ADDRESS)) {
-                    if (isNull(global.automation.reactOnState[script.DEVICE_IEEE_ADDRESS])) {
-                        global.automation.reactOnState[script.DEVICE_IEEE_ADDRESS] = [];
+                    if (!isNull(script.DEVICE_IEEE_ADDRESS)) {
+                        if (isNull(global.automation.reactOnState[script.DEVICE_IEEE_ADDRESS])) {
+                            global.automation.reactOnState[script.DEVICE_IEEE_ADDRESS] = [];
+                        }
+
+                        global.automation.reactOnState[script.DEVICE_IEEE_ADDRESS].push(script.exec);
+                    } else {
+                        global.automation.other.push(script.exec);
                     }
-
-                    global.automation.reactOnState[script.DEVICE_IEEE_ADDRESS].push(script.exec);
-                } else {
-                    global.automation.other.push(script.exec);
+                } catch (e) {
+                    console.error("Unable to load script " + file);
                 }
             }
         });
