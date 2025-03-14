@@ -7,9 +7,9 @@ try {
     const sleep = ms => new Promise(r => setTimeout(r, ms));
 
     while (true) {
-        global.automation.other.forEach(func => {
+        global.automation.other.forEach(async func => {
             try {
-                func()
+                await func();
             } catch (e) {
                 console.error(e);
             }
