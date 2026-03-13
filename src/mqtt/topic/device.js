@@ -3,7 +3,6 @@ import database from "../../automation/database.js";
 
 export default {
     handler: function (topicName, mqttClient, message) {
-        if (isNull(global.ws) || global.ws.readyState !== WebSocket.OPEN) return;
 
         const deviceIeeeAddress = topicName.split("/")[1];
 
@@ -15,7 +14,9 @@ export default {
             }
         });
 
-        global.ws.send(payload);
+        if (!isNull(global.ws) && global.ws.readyState === WebSocket.OPEN) {
+            global.ws.send(payload);
+        }
 
         database.add(deviceIeeeAddress, message);
 
@@ -26,5 +27,7 @@ export default {
         } catch (e) {
             console.log(e)
         }
+
+        if (isNull(global.ws) || global.ws.readyState !== WebSocket.OPEN) return;
     }
 }
